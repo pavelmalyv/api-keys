@@ -2,6 +2,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { ruRU } from '@mui/material/locale';
+import { store } from '@store/store';
+import { Provider } from 'react-redux';
 
 import App from '@/App.tsx';
 import GlobalStyles from '@mui/material/GlobalStyles';
@@ -24,8 +26,10 @@ createRoot(document.getElementById('root')!).render(
 				},
 			}}
 		/>
-		<ThemeProvider theme={theme}>
-			<App />
-		</ThemeProvider>
+		<Provider store={store}>
+			<ThemeProvider theme={theme}>
+				<App />
+			</ThemeProvider>
+		</Provider>
 	</StrictMode>,
 );
