@@ -4,6 +4,9 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import { ruRU } from '@mui/material/locale';
 import { store } from '@store/store';
 import { Provider } from 'react-redux';
+import { AppProvider } from '@toolpad/core/AppProvider';
+import { NotificationsProvider } from '@toolpad/core/useNotifications';
+import { toolpadRu } from './locales/toolpadRu';
 
 import App from '@/App.tsx';
 import GlobalStyles from '@mui/material/GlobalStyles';
@@ -28,7 +31,17 @@ createRoot(document.getElementById('root')!).render(
 		/>
 		<Provider store={store}>
 			<ThemeProvider theme={theme}>
-				<App />
+				<AppProvider theme={theme} localeText={toolpadRu}>
+					<NotificationsProvider
+						slotProps={{
+							snackbar: {
+								anchorOrigin: { vertical: 'top', horizontal: 'right' },
+							},
+						}}
+					>
+						<App />
+					</NotificationsProvider>
+				</AppProvider>
 			</ThemeProvider>
 		</Provider>
 	</StrictMode>,
