@@ -1,6 +1,7 @@
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string, type InferType } from 'yup';
+import { memo } from 'react';
 
 import TableForm, { type TableFormProps } from '@components/TableForm';
 import AppButton from '@UI/AppButton';
@@ -18,7 +19,7 @@ type AddFormProps = {
 	onSubmit: (data: FormValues, reset: () => void) => void;
 };
 
-const AddForm = ({ titleComponent, onSubmit }: AddFormProps) => {
+const AddForm = memo(({ titleComponent, onSubmit }: AddFormProps) => {
 	const { control, handleSubmit, reset } = useForm<FormValues>({
 		resolver: yupResolver(formSchema),
 		defaultValues: {
@@ -54,7 +55,9 @@ const AddForm = ({ titleComponent, onSubmit }: AddFormProps) => {
 			</AppButton>
 		</TableForm>
 	);
-};
+});
+
+AddForm.displayName = 'AddForm';
 
 export default AddForm;
 export type { AddFormProps };

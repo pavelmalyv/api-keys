@@ -1,7 +1,7 @@
 import type { SortOrder, SortType } from '@/types';
 import type { DataApiKey } from '../../types';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { selectApiKeysBySort } from '../../store/apiKeysSelectors';
 import { addApiKey } from '../../store/apiKeysSlice';
@@ -76,7 +76,8 @@ const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysPr
 	const apiKeysRender = useTableBodyRender(apiKeysItems);
 	const dispatch = useAppDispatch();
 
-	const handleAddApiKey: AddFormProps['onSubmit'] = (data, reset) => {
+	const handleAddApiKey: AddFormProps['onSubmit'] = useCallback(
+		(data, reset) => {
 		dispatch(
 			addApiKey({
 				id: uuid(),
@@ -87,7 +88,9 @@ const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysPr
 		);
 
 		reset();
-	};
+		},
+		[dispatch],
+	);
 
 	const handleSortChange = ({
 		sortBy,
