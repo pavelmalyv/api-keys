@@ -10,7 +10,7 @@ import { getNowTimestamp } from '../../utils/date';
 
 import Section, { type SectionProps } from '@UI/Section';
 import AddForm, { type AddFormProps } from '../AddForm/AddForm';
-import AppTable from '@/components/AppTable';
+import AppTable, { type AppTablePaginationProps } from '@/components/AppTable';
 import Box from '@mui/material/Box';
 import DeleteDisabledApiKeys from '../DeleteDisabledApiKeys';
 import useTableBodyRender from '../../hooks/useTableBodyRender';
@@ -60,6 +60,12 @@ const HEAD: Head = [
 
 const ROWS_PER_PAGE_OPTIONS = [5, 10, 25];
 
+const PAGINATION_SX = {
+	'& .MuiTablePagination-toolbar': {
+		pl: 0,
+	},
+};
+
 const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysProps) => {
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(ROWS_PER_PAGE_OPTIONS[0]);
@@ -78,31 +84,34 @@ const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysPr
 
 	const handleAddApiKey: AddFormProps['onSubmit'] = useCallback(
 		(data, reset) => {
-		dispatch(
-			addApiKey({
-				id: uuid(),
-				name: data.nameApiKey,
-				key: uuid(),
-				createdAt: getNowTimestamp(),
-			}),
-		);
+			dispatch(
+				addApiKey({
+					id: uuid(),
+					name: data.nameApiKey,
+					key: uuid(),
+					createdAt: getNowTimestamp(),
+				}),
+			);
 
-		reset();
+			reset();
 		},
 		[dispatch],
 	);
 
-	const handleSortChange = ({
-		sortBy,
-		order,
-		type,
-	}: {
-		sortBy: string;
-		order: SortOrder;
-		type: SortType;
-	}) => {
-		setSort({ sortBy: sortBy as DataApiKey, order: order === 'asc' ? 'desc' : 'asc', type });
-	};
+	const handleSortChange = useCallback(
+		({ sortBy, order, type }: { sortBy: string; order: SortOrder; type: SortType }) =>
+			setSort({ sortBy: sortBy as DataApiKey, order: order === 'asc' ? 'desc' : 'asc', type }),
+		[],
+	);
+
+	const handlePageChange = useCallback<AppTablePaginationProps['onPageChange']>(
+		(_, page) => setPage(page),
+		[],
+	);
+
+	const handleRowsPerPageChange = useCallback<
+		NonNullable<AppTablePaginationProps['onRowsPerPageChange']>
+	>((e) => setRowsPerPage(Number(e.target.value)), []);
 
 	return (
 		<Section titleText="API-ключи" titleVariant={titleVariant} titleComponent={titleComponent}>
@@ -135,13 +144,9 @@ const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysPr
 						count={apiKeysTotal}
 						rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
 						rowsPerPage={rowsPerPage}
-						onPageChange={(_, page) => setPage(page)}
-						onRowsPerPageChange={(e) => setRowsPerPage(Number(e.target.value))}
-						sx={{
-							'& .MuiTablePagination-toolbar': {
-								pl: 0,
-							},
-						}}
+						onPageChange={handlePageChange}
+						onRowsPerPageChange={handleRowsPerPageChange}
+						sx={PAGINATION_SX}
 					/>
 				</Box>
 			</AppTable>
