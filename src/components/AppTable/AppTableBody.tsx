@@ -1,6 +1,6 @@
 import type { TableBodyProps } from '@mui/material';
 
-import { useAppTableContext } from './AppTableContext';
+import { useBodyContext, useHeadContext } from './AppTableContext';
 
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
@@ -9,7 +9,8 @@ import TableBody from '@mui/material/TableBody';
 type AppTableBodyProps = TableBodyProps;
 
 const AppTableBody = ({ children, ...props }: AppTableBodyProps) => {
-	const { body, head } = useAppTableContext();
+	const body = useBodyContext();
+	const head = useHeadContext();
 
 	return (
 		<TableBody {...props}>

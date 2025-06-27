@@ -2,7 +2,8 @@ import type { TableHeadProps } from '@mui/material';
 import type { GenericColumnId } from './AppTable.types';
 import type { SortOrder, Override, SortType } from '@/types';
 
-import { useAppTableContext } from './AppTableContext';
+import { useHeadContext } from './AppTableContext';
+import { memo } from 'react';
 
 import TableRow from '@mui/material/TableRow';
 import TableHead from '@mui/material/TableHead';
@@ -34,47 +35,44 @@ type AppTableHeadOwnProps =
 
 type AppTableHeadProps = Override<TableHeadProps, AppTableHeadOwnProps>;
 
-const AppTableHead = ({
-	isSortable,
-	orderBy,
-	sortOrder,
-	onSortChange,
-	children,
-	...props
-}: AppTableHeadProps) => {
-	const { head } = useAppTableContext();
+const AppTableHead = memo(
+	({ isSortable, orderBy, sortOrder, onSortChange, children, ...props }: AppTableHeadProps) => {
+		const head = useHeadContext();
 
-	return (
-		<TableHead {...props}>
-			<TableRow>
-				{head.map(({ id, label, sortType }) => {
-					if (sortType !== undefined && isSortable) {
-						const isActive = orderBy === id;
-						const order = isActive === false || sortOrder === null ? 'asc' : sortOrder;
+		return (
+			<TableHead {...props}>
+				<TableRow>
+					{head.map(({ id, label, sortType }) => {
+						if (sortType !== undefined && isSortable) {
+							const isActive = orderBy === id;
+							const order = isActive === false || sortOrder === null ? 'asc' : sortOrder;
 
-						return (
-							<TableCell key={id} sortDirection={order}>
-								<TableSortLabel
-									active={orderBy === id}
-									direction={order}
-									onClick={() => onSortChange({ sortBy: id, order, type: sortType })}
-								>
-									{label}
-								</TableSortLabel>
+							return (
+								<TableCell key={id} sortDirection={order}>
+									<TableSortLabel
+										active={orderBy === id}
+										direction={order}
+										onClick={() => onSortChange({ sortBy: id, order, type: sortType })}
+									>
+										{label}
+									</TableSortLabel>
 
-								{sortOrder && <SortIndicator order={sortOrder} />}
-							</TableCell>
-						);
-					} else {
-						return <TableCell key={id}>{label}</TableCell>;
-					}
-				})}
-			</TableRow>
+									{sortOrder && <SortIndicator order={sortOrder} />}
+								</TableCell>
+							);
+						} else {
+							return <TableCell key={id}>{label}</TableCell>;
+						}
+					})}
+				</TableRow>
 
-			{children}
-		</TableHead>
-	);
-};
+				{children}
+			</TableHead>
+		);
+	},
+);
+
+AppTableHead.displayName = 'AppTableHead';
 
 export default AppTableHead;
 export type { AppTableHeadProps };
