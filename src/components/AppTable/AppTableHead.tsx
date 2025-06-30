@@ -48,7 +48,7 @@ const AppTableHead = memo(
 							const order = isActive === false || sortOrder === null ? 'asc' : sortOrder;
 
 							return (
-								<TableCell key={id} sortDirection={order}>
+								<TableCell key={id} sortDirection={order} sx={{ position: 'relative' }}>
 									<TableSortLabel
 										active={orderBy === id}
 										direction={order}
