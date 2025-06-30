@@ -11,7 +11,7 @@ type SortIndicatorProps = Override<BoxProps, SortIndicatorOwnProps>;
 
 const SortIndicator = ({ order, children, ...props }: SortIndicatorProps) => {
 	return (
-		<Box component="span" sx={visuallyHidden} {...props}>
+		<Box sx={visuallyHidden} {...props}>
 			{order === 'desc' ? 'отсортировано по убыванию' : 'отсортировано по возрастанию'}
 
 			{children}
