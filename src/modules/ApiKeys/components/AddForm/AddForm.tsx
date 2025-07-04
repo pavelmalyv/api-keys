@@ -56,4 +56,3 @@ const AddForm = memo(({ titleComponent, onSubmit }: AddFormProps) => {
 AddForm.displayName = 'AddForm';
 
 export default AddForm;
-export type { AddFormProps };
