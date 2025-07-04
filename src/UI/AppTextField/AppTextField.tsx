@@ -1,9 +1,7 @@
 import type { TextFieldProps } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-type AppTextFieldProps = TextFieldProps;
-
-const AppTextField = ({ ...props }: AppTextFieldProps) => {
+const AppTextField = ({ ...props }: TextFieldProps) => {
 	return <TextField {...props} fullWidth />;
 };
 
