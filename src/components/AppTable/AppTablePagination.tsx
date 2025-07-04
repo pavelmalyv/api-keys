@@ -16,4 +16,3 @@ const AppTablePagination = memo(({ count, ...props }: AppTablePaginationProps) =
 AppTablePagination.displayName = 'AppTablePagination';
 
 export default AppTablePagination;
-export type { AppTablePaginationProps };

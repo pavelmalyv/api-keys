@@ -75,4 +75,3 @@ const AppTableHead = memo(
 AppTableHead.displayName = 'AppTableHead';
 
 export default AppTableHead;
-export type { AppTableHeadProps };
