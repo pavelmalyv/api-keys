@@ -28,4 +28,3 @@ AppTable.Table = AppTableTable;
 AppTable.Pagination = AppTablePagination;
 
 export default AppTable;
-export type { AppTableProps };

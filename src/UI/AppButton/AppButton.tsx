@@ -13,4 +13,3 @@ const AppButton = ({ variant = 'text', children, ...props }: AppButtonProps) => 
 };
 
 export default AppButton;
-export type { AppButtonProps };

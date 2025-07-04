@@ -1,5 +1,3 @@
-import type { Override } from '@/types';
-import type { AppSwitchProps } from '@/UI/AppSwitch';
 import type { ApiKey } from '../../types';
 
 import { useAppDispatch } from '@store/hooks';
@@ -7,14 +5,12 @@ import { updateApiKey } from '../../store/apiKeysSlice';
 
 import AppSwitch from '@/UI/AppSwitch';
 
-type ApiKeySwitchOwnProps = {
+type ApiKeySwitchProps = {
 	id: ApiKey['id'];
 	isActive: ApiKey['isActive'];
 };
 
-type ApiKeySwitchProps = Override<AppSwitchProps, ApiKeySwitchOwnProps>;
-
-const ApiKeySwitch = ({ id, isActive, ...props }: ApiKeySwitchProps) => {
+const ApiKeySwitch = ({ id, isActive }: ApiKeySwitchProps) => {
 	const dispatch = useAppDispatch();
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,10 +22,8 @@ const ApiKeySwitch = ({ id, isActive, ...props }: ApiKeySwitchProps) => {
 			onChange={handleChange}
 			checked={isActive}
 			slotProps={{ input: { 'aria-label': 'Управление API-ключом' } }}
-			{...props}
 		/>
 	);
 };
 
 export default ApiKeySwitch;
-export type { ApiKeySwitchProps };

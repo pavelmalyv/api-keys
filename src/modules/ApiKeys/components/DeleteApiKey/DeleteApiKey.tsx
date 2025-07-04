@@ -28,4 +28,3 @@ const DeleteApiKey = ({ id, ...props }: DeleteApiKeyProps) => {
 };
 
 export default DeleteApiKey;
-export type { DeleteApiKeyProps };

@@ -8,4 +8,3 @@ const AppSwitch = ({ ...props }: AppSwitchProps) => {
 };
 
 export default AppSwitch;
-export type { AppSwitchProps };

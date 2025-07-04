@@ -19,4 +19,3 @@ AppTableTable.Head = AppTableHead;
 AppTableTable.Body = AppTableBody;
 
 export default AppTableTable;
-export type { AppTableTableProps };

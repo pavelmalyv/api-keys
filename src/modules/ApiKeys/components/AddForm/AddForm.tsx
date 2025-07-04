@@ -1,22 +1,18 @@
+import type { TypographyProps } from '@mui/material';
+import type { AddFormSubmitHandler, FormValues } from './AddForm.types';
+
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string, type InferType } from 'yup';
 import { memo } from 'react';
 
-import TableForm, { type TableFormProps } from '@components/TableForm';
+import TableForm from '@components/TableForm';
 import AppButton from '@UI/AppButton';
 import AppTextField from '@/UI/AppTextField';
+import { formSchema } from './addFormSchema';
 
-const formSchema = object({
-	nameApiKey: string()
-		.required('Поле обязательно для заполнения')
-		.max(100, 'Максимальная длина 100 символов'),
-});
-
-type FormValues = InferType<typeof formSchema>;
 type AddFormProps = {
-	titleComponent?: TableFormProps['titleComponent'];
-	onSubmit: (data: FormValues, reset: () => void) => void;
+	titleComponent?: TypographyProps['component'];
+	onSubmit: AddFormSubmitHandler;
 };
 
 const AddForm = memo(({ titleComponent, onSubmit }: AddFormProps) => {
@@ -60,4 +56,3 @@ const AddForm = memo(({ titleComponent, onSubmit }: AddFormProps) => {
 AddForm.displayName = 'AddForm';
 
 export default AddForm;
-export type { AddFormProps };

@@ -39,4 +39,3 @@ const AppTableBody = ({ children, ...props }: AppTableBodyProps) => {
 };
 
 export default AppTableBody;
-export type { AppTableBodyProps };

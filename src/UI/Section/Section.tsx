@@ -45,4 +45,3 @@ const Section = ({
 };
 
 export default Section;
-export type { SectionProps };
