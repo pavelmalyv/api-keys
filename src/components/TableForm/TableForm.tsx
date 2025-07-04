@@ -52,4 +52,3 @@ const TableFormFields = ({ children }: TableFormFieldsProps) => {
 TableForm.Fields = TableFormFields;
 
 export default TableForm;
-export type { TableFormProps };
