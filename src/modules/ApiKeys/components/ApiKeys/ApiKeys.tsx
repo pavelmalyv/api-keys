@@ -1,5 +1,6 @@
 import type { SortOrder, SortType } from '@/types';
 import type { DataApiKey } from '../../types';
+import type { TypographyProps } from '@mui/material';
 
 import { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
@@ -8,17 +9,17 @@ import { addApiKey } from '../../store/apiKeysSlice';
 import { v4 as uuid } from 'uuid';
 import { getNowTimestamp } from '../../utils/date';
 
-import Section, { type SectionProps } from '@UI/Section';
-import AddForm, { type AddFormProps } from '../AddForm/AddForm';
-import AppTable, { type AppTablePaginationProps } from '@/components/AppTable';
+import Section from '@UI/Section';
+import AddForm, { type AddFormSubmitHandler } from '../AddForm';
+import AppTable from '@/components/AppTable';
 import Box from '@mui/material/Box';
 import DeleteDisabledApiKeys from '../DeleteDisabledApiKeys';
 import useTableBodyRender from '../../hooks/useTableBodyRender';
 
 type ApiKeysProps = {
-	titleVariant?: SectionProps['titleVariant'];
-	titleComponent?: SectionProps['titleComponent'];
-	titleFormComponent?: AddFormProps['titleComponent'];
+	titleVariant?: TypographyProps['variant'];
+	titleComponent?: TypographyProps['component'];
+	titleFormComponent?: TypographyProps['component'];
 };
 
 type Head = ReadonlyArray<{
@@ -82,7 +83,7 @@ const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysPr
 	const apiKeysRender = useTableBodyRender(apiKeysItems);
 	const dispatch = useAppDispatch();
 
-	const handleAddApiKey: AddFormProps['onSubmit'] = useCallback(
+	const handleAddApiKey = useCallback<AddFormSubmitHandler>(
 		(data, reset) => {
 			dispatch(
 				addApiKey({
@@ -104,14 +105,12 @@ const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysPr
 		[],
 	);
 
-	const handlePageChange = useCallback<AppTablePaginationProps['onPageChange']>(
-		(_, page) => setPage(page),
+	const handlePageChange = useCallback((_: unknown, page: number) => setPage(page), []);
+
+	const handleRowsPerPageChange = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => setRowsPerPage(Number(e.target.value)),
 		[],
 	);
-
-	const handleRowsPerPageChange = useCallback<
-		NonNullable<AppTablePaginationProps['onRowsPerPageChange']>
-	>((e) => setRowsPerPage(Number(e.target.value)), []);
 
 	return (
 		<Section titleText="API-ключи" titleVariant={titleVariant} titleComponent={titleComponent}>
