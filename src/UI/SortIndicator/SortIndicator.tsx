@@ -1,13 +1,11 @@
-import type { SortOrder, Override } from '@/types';
+import type { SortOrder } from '@/types';
 
 import Box, { type BoxProps } from '@mui/material/Box';
 import { visuallyHidden } from '@mui/utils';
 
-type SortIndicatorOwnProps = {
+interface SortIndicatorProps extends BoxProps {
 	order: SortOrder;
-};
-
-type SortIndicatorProps = Override<BoxProps, SortIndicatorOwnProps>;
+}
 
 const SortIndicator = ({ order, children, ...props }: SortIndicatorProps) => {
 	return (
