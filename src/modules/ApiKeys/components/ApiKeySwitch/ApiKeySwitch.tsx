@@ -27,4 +27,3 @@ const ApiKeySwitch = ({ id, isActive }: ApiKeySwitchProps) => {
 };
 
 export default ApiKeySwitch;
-export type { ApiKeySwitchProps };
