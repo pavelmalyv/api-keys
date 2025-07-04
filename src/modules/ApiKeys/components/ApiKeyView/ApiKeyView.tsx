@@ -24,4 +24,3 @@ const ApiKeyView = ({ apiKey, children, ...props }: ApiKeyViewProps) => {
 };
 
 export default ApiKeyView;
-export type { ApiKeyViewProps };
