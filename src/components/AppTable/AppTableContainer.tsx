@@ -5,9 +5,9 @@ import Table from '@mui/material/Table';
 import AppTableHead from './AppTableHead';
 import AppTableBody from './AppTableBody';
 
-type AppTableTableProps = TableContainerProps;
+type AppTableContainerProps = TableContainerProps;
 
-const AppTableTable = ({ children, ...props }: AppTableTableProps) => {
+const AppTableContainer = ({ children, ...props }: AppTableContainerProps) => {
 	return (
 		<TableContainer {...props}>
 			<Table>{children}</Table>
@@ -15,7 +15,7 @@ const AppTableTable = ({ children, ...props }: AppTableTableProps) => {
 	);
 };
 
-AppTableTable.Head = AppTableHead;
-AppTableTable.Body = AppTableBody;
+AppTableContainer.Head = AppTableHead;
+AppTableContainer.Body = AppTableBody;
 
-export default AppTableTable;
+export default AppTableContainer;

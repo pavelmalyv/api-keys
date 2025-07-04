@@ -117,15 +117,15 @@ const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysPr
 			<AddForm titleComponent={titleFormComponent} onSubmit={handleAddApiKey} />
 
 			<AppTable head={HEAD} body={apiKeysRender}>
-				<AppTable.Table>
-					<AppTable.Table.Head
+				<AppTable.Container>
+					<AppTable.Container.Head
 						isSortable={true}
 						orderBy={sort?.sortBy ?? null}
 						sortOrder={sort?.order ?? null}
 						onSortChange={handleSortChange}
 					/>
-					<AppTable.Table.Body />
-				</AppTable.Table>
+					<AppTable.Container.Body />
+				</AppTable.Container>
 				<Box
 					sx={{
 						display: 'flex',

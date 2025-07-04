@@ -3,7 +3,7 @@ import type { AppTableHead, TableBodyRows } from './AppTable.types';
 import type { Override } from '@/types';
 
 import Box from '@mui/material/Box';
-import AppTableTable from './AppTableTable';
+import AppTableContainer from './AppTableContainer';
 import AppTablePagination from './AppTablePagination';
 import { BodyProvider, HeadProvider } from './AppTableContext';
 
@@ -24,7 +24,7 @@ const AppTable = <T extends string>({ head, body, children, ...props }: AppTable
 	);
 };
 
-AppTable.Table = AppTableTable;
+AppTable.Container = AppTableContainer;
 AppTable.Pagination = AppTablePagination;
 
 export default AppTable;
