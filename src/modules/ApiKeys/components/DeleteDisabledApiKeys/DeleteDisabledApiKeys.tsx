@@ -18,11 +18,10 @@ const DeleteDisabledApiKeys = memo(() => {
 	return (
 		<AppButton variant="outlined" disabled={!hasDisabledApiKeys} onClick={handleDelete}>
 			Удалить неактивные {hasDisabledApiKeys && `(${apiKeysDisabled.length})`}
-					</AppButton>
+		</AppButton>
 	);
 });
 
 DeleteDisabledApiKeys.displayName = 'DeleteDisabledApiKeys';
 
 export default DeleteDisabledApiKeys;
-export type { DeleteDisabledApiKeysProps };
