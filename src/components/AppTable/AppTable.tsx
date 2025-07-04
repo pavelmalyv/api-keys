@@ -1,22 +1,19 @@
-import type { BoxProps } from '@mui/material';
 import type { AppTableHead, TableBodyRows } from './AppTable.types';
-import type { Override } from '@/types';
 
 import Box from '@mui/material/Box';
 import AppTableContainer from './AppTableContainer';
 import AppTablePagination from './AppTablePagination';
 import { BodyProvider, HeadProvider } from './AppTableContext';
 
-type AppTableOwnProps<T extends string> = {
+type AppTableProps<T extends string> = {
 	head: AppTableHead<T>;
 	body: TableBodyRows<T>;
+	children: React.ReactNode;
 };
 
-type AppTableProps<T extends string> = Override<BoxProps, AppTableOwnProps<T>>;
-
-const AppTable = <T extends string>({ head, body, children, ...props }: AppTableProps<T>) => {
+const AppTable = <T extends string>({ head, body, children }: AppTableProps<T>) => {
 	return (
-		<Box {...props}>
+		<Box>
 			<HeadProvider value={head}>
 				<BodyProvider value={body}>{children}</BodyProvider>
 			</HeadProvider>

@@ -1,6 +1,6 @@
 import type { TableHeadProps } from '@mui/material';
 import type { GenericColumnId } from './AppTable.types';
-import type { SortOrder, Override, SortType } from '@/types';
+import type { SortOrder, SortType } from '@/types';
 
 import { useHeadContext } from './AppTableContext';
 import { memo } from 'react';
@@ -11,29 +11,29 @@ import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import SortIndicator from '@/UI/SortIndicator';
 
-type AppTableHeadOwnProps =
-	| {
-			isSortable?: never;
-			orderBy?: never;
-			sortOrder?: never;
-			onSortChange?: never;
-	  }
-	| {
-			isSortable: true;
-			orderBy: GenericColumnId | null;
-			sortOrder: SortOrder | null;
-			onSortChange: ({
-				sortBy,
-				order,
-				type,
-			}: {
-				sortBy: GenericColumnId;
-				order: SortOrder;
-				type: SortType;
-			}) => void;
-	  };
+interface AppTableHeadWithoutSortable extends TableHeadProps {
+	isSortable?: false | never;
+	orderBy?: never;
+	sortOrder?: never;
+	onSortChange?: never;
+}
 
-type AppTableHeadProps = Override<TableHeadProps, AppTableHeadOwnProps>;
+interface AppTableHeadWithSortable extends TableHeadProps {
+	isSortable: true;
+	orderBy: GenericColumnId | null;
+	sortOrder: SortOrder | null;
+	onSortChange: ({
+		sortBy,
+		order,
+		type,
+	}: {
+		sortBy: GenericColumnId;
+		order: SortOrder;
+		type: SortType;
+	}) => void;
+}
+
+type AppTableHeadProps = AppTableHeadWithoutSortable | AppTableHeadWithSortable;
 
 const AppTableHead = memo(
 	({ isSortable, orderBy, sortOrder, onSortChange, children, ...props }: AppTableHeadProps) => {
