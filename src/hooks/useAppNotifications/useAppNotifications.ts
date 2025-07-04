@@ -1,4 +1,4 @@
-import type { NotificationKey } from '@/types/notification';
+import type { NotificationKey } from '@/types';
 
 import { useNotifications } from '@toolpad/core/useNotifications';
 import { useCallback } from 'react';
