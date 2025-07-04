@@ -8,4 +8,3 @@ const AppTextField = ({ ...props }: AppTextFieldProps) => {
 };
 
 export default AppTextField;
-export type { AppTextFieldProps };
