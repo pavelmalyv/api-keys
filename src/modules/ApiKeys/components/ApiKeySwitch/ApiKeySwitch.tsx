@@ -5,10 +5,10 @@ import { updateApiKey } from '../../store/apiKeysSlice';
 
 import AppSwitch from '@/UI/AppSwitch';
 
-type ApiKeySwitchProps = {
+interface ApiKeySwitchProps {
 	id: ApiKey['id'];
 	isActive: ApiKey['isActive'];
-};
+}
 
 const ApiKeySwitch = ({ id, isActive }: ApiKeySwitchProps) => {
 	const dispatch = useAppDispatch();
