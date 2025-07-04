@@ -12,4 +12,3 @@ const AppButtonIcon = ({ size = 'medium', children, ...props }: AppButtonIconPro
 };
 
 export default AppButtonIcon;
-export type { AppButtonIconProps };
