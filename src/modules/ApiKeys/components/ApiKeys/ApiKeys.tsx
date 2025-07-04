@@ -154,4 +154,3 @@ const ApiKeys = ({ titleVariant, titleComponent, titleFormComponent }: ApiKeysPr
 };
 
 export default ApiKeys;
-export type { ApiKeysProps };
