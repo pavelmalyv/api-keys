@@ -16,11 +16,11 @@ import Box from '@mui/material/Box';
 import DeleteDisabledApiKeys from '../DeleteDisabledApiKeys';
 import useTableBodyRender from '../../hooks/useTableBodyRender';
 
-type ApiKeysProps = {
+interface ApiKeysProps {
 	titleVariant?: TypographyProps['variant'];
 	titleComponent?: TypographyProps['component'];
 	titleFormComponent?: TypographyProps['component'];
-};
+}
 
 type Head = ReadonlyArray<{
 	id: DataApiKey | 'delete';
