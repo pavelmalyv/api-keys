@@ -1,9 +1,7 @@
 import type { IconButtonProps } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-type AppButtonIconProps = IconButtonProps;
-
-const AppButtonIcon = ({ size = 'medium', children, ...props }: AppButtonIconProps) => {
+const AppButtonIcon = ({ size = 'medium', children, ...props }: IconButtonProps) => {
 	return (
 		<IconButton size={size} {...props}>
 			{children}

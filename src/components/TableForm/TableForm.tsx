@@ -5,12 +5,12 @@ import { useId } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-type TableFormProps = {
+interface TableFormProps {
 	title: string;
 	titleComponent?: TypographyProps['component'];
 	children: React.ReactNode;
 	onSubmit: React.FormEventHandler<HTMLFormElement>;
-};
+}
 
 const TableForm = ({ title, titleComponent, children, onSubmit }: TableFormProps) => {
 	const titleId = useId();
@@ -41,9 +41,9 @@ const TableForm = ({ title, titleComponent, children, onSubmit }: TableFormProps
 	);
 };
 
-type TableFormFieldsProps = {
+interface TableFormFieldsProps {
 	children: React.ReactNode;
-};
+}
 
 const TableFormFields = ({ children }: TableFormFieldsProps) => {
 	return <Box sx={{ flex: 1 }}>{children}</Box>;

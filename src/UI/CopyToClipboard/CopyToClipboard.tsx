@@ -1,5 +1,3 @@
-import type { Override } from '@/types';
-
 import { useMediaQuery, type SxProps } from '@mui/system';
 import { useEffect, useRef, useState } from 'react';
 
@@ -10,12 +8,10 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import useCopyToClipboard from '@/hooks/useCopyToClipboard/useCopyToClipboard';
 
-type CopyToClipboardOwnProps = {
+interface CopyToClipboardProps extends BoxProps {
 	copyText: string;
 	iconSx?: SxProps;
-};
-
-type CopyToClipboardProps = Override<BoxProps, CopyToClipboardOwnProps>;
+}
 
 const TOOLTIP_CLOSE_DELAY_MS = 4000;
 

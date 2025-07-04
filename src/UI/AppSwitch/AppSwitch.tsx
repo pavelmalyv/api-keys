@@ -1,9 +1,7 @@
 import type { SwitchProps } from '@mui/material';
 import Switch from '@mui/material/Switch';
 
-type AppSwitchProps = SwitchProps;
-
-const AppSwitch = ({ ...props }: AppSwitchProps) => {
+const AppSwitch = ({ ...props }: SwitchProps) => {
 	return <Switch {...props} />;
 };
 

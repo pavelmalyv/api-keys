@@ -1,10 +1,7 @@
 import type { ButtonProps } from '@mui/material';
-
 import Button from '@mui/material/Button';
 
-type AppButtonProps = ButtonProps;
-
-const AppButton = ({ variant = 'text', children, ...props }: AppButtonProps) => {
+const AppButton = ({ variant = 'text', children, ...props }: ButtonProps) => {
 	return (
 		<Button variant={variant} {...props}>
 			{children}

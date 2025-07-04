@@ -1,5 +1,4 @@
 import type { BoxProps, TypographyProps } from '@mui/material';
-import type { Override } from '@/types';
 
 import { useId } from 'react';
 
@@ -7,13 +6,11 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-type SectionOwnProps = {
+interface SectionProps extends BoxProps {
 	titleText: string;
 	titleVariant?: TypographyProps['variant'];
 	titleComponent?: TypographyProps['component'];
-};
-
-type SectionProps = Override<BoxProps, SectionOwnProps>;
+}
 
 const Section = ({
 	titleText,

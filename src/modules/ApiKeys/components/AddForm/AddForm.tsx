@@ -10,10 +10,10 @@ import AppButton from '@UI/AppButton';
 import AppTextField from '@/UI/AppTextField';
 import { formSchema } from './addFormSchema';
 
-type AddFormProps = {
+interface AddFormProps {
 	titleComponent?: TypographyProps['component'];
 	onSubmit: AddFormSubmitHandler;
-};
+}
 
 const AddForm = memo(({ titleComponent, onSubmit }: AddFormProps) => {
 	const { control, handleSubmit, reset } = useForm<FormValues>({
