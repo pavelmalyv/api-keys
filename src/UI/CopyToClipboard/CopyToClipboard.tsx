@@ -95,4 +95,3 @@ const CopyToClipboard = ({ iconSx, children, copyText, ...props }: CopyToClipboa
 };
 
 export default CopyToClipboard;
-export type { CopyToClipboardProps };
