@@ -20,4 +20,3 @@ const SortIndicator = ({ order, children, ...props }: SortIndicatorProps) => {
 };
 
 export default SortIndicator;
-export type { SortIndicatorProps };
