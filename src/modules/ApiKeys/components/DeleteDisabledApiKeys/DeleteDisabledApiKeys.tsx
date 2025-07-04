@@ -3,11 +3,9 @@ import { selectApiKeysByActive } from '../../store/apiKeysSelectors';
 
 import { deleteApiKeys } from '../../store/apiKeysSlice';
 import { memo } from 'react';
-import AppButton, { type AppButtonProps } from '@/UI/AppButton';
+import AppButton from '@/UI/AppButton';
 
-type DeleteDisabledApiKeysProps = AppButtonProps;
-
-const DeleteDisabledApiKeys = memo(({ children, ...props }: DeleteDisabledApiKeysProps) => {
+const DeleteDisabledApiKeys = memo(() => {
 	const apiKeysDisabled = useAppSelector((state) => selectApiKeysByActive(state, false));
 	const hasDisabledApiKeys = apiKeysDisabled.length > 0;
 	const dispatch = useAppDispatch();
@@ -18,10 +16,9 @@ const DeleteDisabledApiKeys = memo(({ children, ...props }: DeleteDisabledApiKey
 	};
 
 	return (
-		<AppButton variant="outlined" {...props} disabled={!hasDisabledApiKeys} onClick={handleDelete}>
+		<AppButton variant="outlined" disabled={!hasDisabledApiKeys} onClick={handleDelete}>
 			Удалить неактивные {hasDisabledApiKeys && `(${apiKeysDisabled.length})`}
-			{children}
-		</AppButton>
+					</AppButton>
 	);
 });
 
