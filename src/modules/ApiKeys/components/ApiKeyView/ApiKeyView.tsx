@@ -1,7 +1,7 @@
 import type { ApiKeyValue } from '../../types';
 
 import Box from '@mui/material/Box';
-import CopyToClipboard from '@/UI/CopyToClipboard';
+import CopyToClipboard from '@components/CopyToClipboard';
 
 interface ApiKeyViewProps {
 	apiKey: ApiKeyValue;
