@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import AppButtonIcon from '../AppButtonIcon';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import useCopyToClipboard from '@/hooks/useCopyToClipboard/useCopyToClipboard';
+import useCopyToClipboard from '@shared/hooks/useCopyToClipboard/useCopyToClipboard';
 
 interface CopyToClipboardProps extends BoxProps {
 	copyText: string;

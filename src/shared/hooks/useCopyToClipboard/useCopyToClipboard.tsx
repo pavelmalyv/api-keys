@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import useAppNotifications from '@/hooks/useAppNotifications/useAppNotifications';
+import useAppNotifications from '@shared/hooks/useAppNotifications/useAppNotifications';
 
 const useCopyToClipboard = () => {
 	const { showError } = useAppNotifications();
