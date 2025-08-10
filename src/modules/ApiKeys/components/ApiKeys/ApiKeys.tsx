@@ -1,4 +1,4 @@
-import type { SortOrder, SortType } from '@/types';
+import type { SortOrder, SortType } from '@shared/types';
 import type { DataApiKey } from '../../types';
 import type { TypographyProps } from '@mui/material';
 

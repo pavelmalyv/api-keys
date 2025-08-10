@@ -1,5 +1,5 @@
 import type { RootState } from '@shared/store/store';
-import type { SortOrder, SortType } from '@/types';
+import type { SortOrder, SortType } from '@shared/types';
 import type { ApiKey } from '../types';
 
 import { createSelector } from '@reduxjs/toolkit';

@@ -1,4 +1,4 @@
-import type { SortOrder, SortType } from '@/types';
+import type { SortOrder, SortType } from '@shared/types';
 
 const assertNever = (x: never): never => {
 	throw new Error(`Unexpected value: ${x}`);
