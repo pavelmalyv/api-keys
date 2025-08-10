@@ -1,1 +1,1 @@
-export * from './sort';
+export { combineSort } from './sort';
