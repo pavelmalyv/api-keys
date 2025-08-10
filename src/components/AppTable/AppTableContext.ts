@@ -1,4 +1,4 @@
-import { createCompoundContext } from '@/context/createCompoundContext';
+import { createCompoundContext } from '@shared/context/createCompoundContext';
 import type { AppTableHead, TableBodyRows, GenericColumnId } from './AppTable.types';
 
 const [useHeadContext, HeadProvider] = createCompoundContext<AppTableHead<GenericColumnId>>();

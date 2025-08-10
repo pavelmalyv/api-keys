@@ -1,4 +1,4 @@
-import type { SortOrder } from '@/types';
+import type { SortOrder } from '@shared/types';
 
 import Box, { type BoxProps } from '@mui/material/Box';
 import { visuallyHidden } from '@mui/utils';

@@ -1,6 +1,6 @@
 import type { TableHeadProps } from '@mui/material';
 import type { GenericColumnId } from './AppTable.types';
-import type { SortOrder, SortType } from '@/types';
+import type { SortOrder, SortType } from '@shared/types';
 
 import { useHeadContext } from './AppTableContext';
 import { memo } from 'react';

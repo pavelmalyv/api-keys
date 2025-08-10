@@ -1,6 +1,6 @@
 import type { ApiKey } from '../../types';
 
-import { useAppDispatch } from '@store/hooks';
+import { useAppDispatch } from '@shared/store/hooks';
 import { updateApiKey } from '../../store/apiKeysSlice';
 
 import AppSwitch from '@/UI/AppSwitch';

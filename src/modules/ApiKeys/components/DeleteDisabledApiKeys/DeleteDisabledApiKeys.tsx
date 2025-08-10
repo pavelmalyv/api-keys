@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@shared/store/hooks';
 import { selectApiKeysByActive } from '../../store/apiKeysSelectors';
 
 import { deleteApiKeys } from '../../store/apiKeysSlice';

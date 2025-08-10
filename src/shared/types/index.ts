@@ -1,2 +1,2 @@
-export * from './sort';
 export * from './notification';
+export * from './sort';
