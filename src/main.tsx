@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { ruRU } from '@mui/material/locale';
-import { store } from '@store/store';
+import { store } from '@shared/store/store';
 import { Provider } from 'react-redux';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { NotificationsProvider } from '@toolpad/core/useNotifications';

@@ -11,7 +11,6 @@ export default defineConfig({
 			'@modules': '/src/modules',
 			'@components': '/src/components',
 			'@UI': '/src/UI',
-			'@store': '/src/store',
 			'@shared': '/src/shared',
 			'@': '/src',
 		},

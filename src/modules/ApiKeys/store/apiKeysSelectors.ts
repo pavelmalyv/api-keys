@@ -1,4 +1,4 @@
-import type { RootState } from '@store/store';
+import type { RootState } from '@shared/store/store';
 import type { SortOrder, SortType } from '@/types';
 import type { ApiKey } from '../types';
 

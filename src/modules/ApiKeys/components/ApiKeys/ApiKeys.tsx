@@ -3,7 +3,7 @@ import type { DataApiKey } from '../../types';
 import type { TypographyProps } from '@mui/material';
 
 import { useCallback, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { useAppDispatch, useAppSelector } from '@shared/store/hooks';
 import { selectApiKeysBySort } from '../../store/apiKeysSelectors';
 import { addApiKey } from '../../store/apiKeysSlice';
 import { v4 as uuid } from 'uuid';

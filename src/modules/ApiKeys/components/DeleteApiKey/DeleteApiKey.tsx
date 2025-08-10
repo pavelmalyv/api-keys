@@ -1,6 +1,6 @@
 import type { ApiKey } from '../../types';
 
-import { useAppDispatch } from '@store/hooks';
+import { useAppDispatch } from '@shared/store/hooks';
 import { deleteApiKeys } from '../../store/apiKeysSlice';
 
 import AppButtonIcon from '@/UI/AppButtonIcon';
