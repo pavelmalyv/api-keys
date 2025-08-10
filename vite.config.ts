@@ -7,12 +7,12 @@ export default defineConfig({
 	base: '/api-keys/',
 	resolve: {
 		alias: {
-			'@': '/src',
 			'@pages': '/src/pages',
 			'@modules': '/src/modules',
 			'@components': '/src/components',
 			'@UI': '/src/UI',
 			'@store': '/src/store',
+			'@': '/src',
 		},
 	},
 	plugins: [
