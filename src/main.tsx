@@ -6,7 +6,7 @@ import { store } from '@shared/store/store';
 import { Provider } from 'react-redux';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { NotificationsProvider } from '@toolpad/core/useNotifications';
-import { toolpadRu } from './locales/toolpadRu';
+import { toolpadRu } from '@shared/locales/toolpadRu';
 
 import App from '@/App.tsx';
 import GlobalStyles from '@mui/material/GlobalStyles';
