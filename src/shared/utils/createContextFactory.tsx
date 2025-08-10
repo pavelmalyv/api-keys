@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-export const createCompoundContext = <T extends object>() => {
+export const createContextFactory = <T extends object>() => {
 	const Context = createContext<T | undefined>(undefined);
 
 	interface ProviderProps {
@@ -11,7 +11,7 @@ export const createCompoundContext = <T extends object>() => {
 		return <Context.Provider value={value}>{children}</Context.Provider>;
 	};
 
-	const useCompoundContext = () => {
+	const useContextFactory = () => {
 		const context = useContext(Context);
 
 		if (!context) {
@@ -21,5 +21,5 @@ export const createCompoundContext = <T extends object>() => {
 		return context;
 	};
 
-	return [useCompoundContext, Provider] as const;
+	return [useContextFactory, Provider] as const;
 };
