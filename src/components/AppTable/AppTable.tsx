@@ -1,9 +1,9 @@
 import type { AppTableHead, TableBodyRows } from './AppTable.types';
+import { BodyProvider, HeadProvider } from './AppTableContext';
 
 import Box from '@mui/material/Box';
 import AppTableContainer from './AppTableContainer';
 import AppTablePagination from './AppTablePagination';
-import { BodyProvider, HeadProvider } from './AppTableContext';
 
 type AppTableProps<T extends string> = {
 	head: AppTableHead<T>;

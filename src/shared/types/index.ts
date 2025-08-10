@@ -1,2 +1,2 @@
-export * from './notification';
-export * from './sort';
+export type { NotificationKey } from './notification';
+export type { SortOrder, SortType } from './sort';
