@@ -4,11 +4,11 @@ import type { AddFormSubmitHandler, FormValues } from './AddForm.types';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { memo } from 'react';
+import { formSchema } from './addFormSchema';
 
 import TableForm from '@components/TableForm';
 import AppButton from '@UI/AppButton';
 import AppTextField from '@/UI/AppTextField';
-import { formSchema } from './addFormSchema';
 
 interface AddFormProps {
 	titleComponent?: TypographyProps['component'];
