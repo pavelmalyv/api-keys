@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Box, { type BoxProps } from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
-import AppButtonIcon from '../AppButtonIcon';
+import AppButtonIcon from '@UI/AppButtonIcon';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import useCopyToClipboard from '@shared/hooks/useCopyToClipboard/useCopyToClipboard';
