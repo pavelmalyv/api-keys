@@ -1,8 +1,4 @@
-import type { TableHeadProps } from '@mui/material';
-import type { GenericColumnId } from './AppTable.types';
-import type { SortOrder, SortType } from '@shared/types';
-
-import { useHeadContext } from './AppTableContext';
+import type { HeadData, TableSort } from './types';
 import { memo } from 'react';
 
 import TableRow from '@mui/material/TableRow';
@@ -11,66 +7,41 @@ import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import SortIndicator from '@/UI/SortIndicator';
 
-interface AppTableHeadWithoutSortable extends TableHeadProps {
-	isSortable?: false | never;
-	orderBy?: never;
-	sortOrder?: never;
-	onSortChange?: never;
+interface AppTableHeadProps {
+	data: HeadData;
+	tableSort: TableSort;
 }
 
-interface AppTableHeadWithSortable extends TableHeadProps {
-	isSortable: true;
-	orderBy: GenericColumnId | null;
-	sortOrder: SortOrder | null;
-	onSortChange: ({
-		sortBy,
-		order,
-		type,
-	}: {
-		sortBy: GenericColumnId;
-		order: SortOrder;
-		type: SortType;
-	}) => void;
-}
+const AppTableHead = memo(({ data, tableSort }: AppTableHeadProps) => {
+	return (
+		<TableHead>
+			<TableRow>
+				{data.map(({ id, label, sortType }) => {
+					if (sortType === undefined) {
+						return <TableCell key={id}>{label}</TableCell>;
+					}
 
-type AppTableHeadProps = AppTableHeadWithoutSortable | AppTableHeadWithSortable;
+					const isActive = tableSort?.sortBy === id;
+					const order = isActive ? tableSort.order : 'asc';
 
-const AppTableHead = memo(
-	({ isSortable, orderBy, sortOrder, onSortChange, children, ...props }: AppTableHeadProps) => {
-		const head = useHeadContext();
+					return (
+						<TableCell key={id} sortDirection={order} sx={{ position: 'relative' }}>
+							<TableSortLabel
+								active={isActive}
+								direction={order}
+								onClick={() => tableSort?.onChange(id, order, sortType)}
+							>
+								{label}
+							</TableSortLabel>
 
-		return (
-			<TableHead {...props}>
-				<TableRow>
-					{head.map(({ id, label, sortType }) => {
-						if (sortType !== undefined && isSortable) {
-							const isActive = orderBy === id;
-							const order = isActive === false || sortOrder === null ? 'asc' : sortOrder;
-
-							return (
-								<TableCell key={id} sortDirection={order} sx={{ position: 'relative' }}>
-									<TableSortLabel
-										active={orderBy === id}
-										direction={order}
-										onClick={() => onSortChange({ sortBy: id, order, type: sortType })}
-									>
-										{label}
-									</TableSortLabel>
-
-									{sortOrder && <SortIndicator order={sortOrder} />}
-								</TableCell>
-							);
-						} else {
-							return <TableCell key={id}>{label}</TableCell>;
-						}
-					})}
-				</TableRow>
-
-				{children}
-			</TableHead>
-		);
-	},
-);
+							{isActive && <SortIndicator order={order} />}
+						</TableCell>
+					);
+				})}
+			</TableRow>
+		</TableHead>
+	);
+});
 
 AppTableHead.displayName = 'AppTableHead';
 

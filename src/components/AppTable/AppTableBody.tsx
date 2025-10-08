@@ -1,39 +1,41 @@
-import type { TableBodyProps } from '@mui/material';
-
-import { useBodyContext, useHeadContext } from './AppTableContext';
+import type { HeadData, BodyData, RenderBodyRow } from './types';
+import { memo } from 'react';
 
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
+import AppTableBodyRow from './AppTableBodyRow';
 
-const AppTableBody = ({ children, ...props }: TableBodyProps) => {
-	const body = useBodyContext();
-	const head = useHeadContext();
+interface AppTableBodyProps {
+	headData: HeadData;
+	bodyData: BodyData;
+	renderBodyRow?: RenderBodyRow;
+}
 
+const AppTableBody = memo(({ headData, bodyData, renderBodyRow }: AppTableBodyProps) => {
 	return (
-		<TableBody {...props}>
-			{body.length > 0 ? (
-				body.map((row) => (
-					<TableRow key={row.id}>
-						{head.map(({ id: columnId }) => (
-							<TableCell key={columnId}>{row[columnId] ?? null}</TableCell>
-						))}
-					</TableRow>
-				))
-			) : (
+		<TableBody>
+			{bodyData.length === 0 ? (
 				<TableRow>
 					<TableCell
-						colSpan={head.length}
+						colSpan={headData.length}
 						sx={{ textAlign: 'center', height: 120, color: 'text.secondary' }}
 					>
 						Добавьте свой первый API-ключ
 					</TableCell>
 				</TableRow>
+			) : (
+				bodyData.map((row) => (
+					<AppTableBodyRow
+						key={row.id}
+						headData={headData}
+						row={row}
+						renderBodyRow={renderBodyRow}
+					/>
+				))
 			)}
-
-			{children}
 		</TableBody>
 	);
-};
+});
 
 export default AppTableBody;
