@@ -1,17 +1,30 @@
-import type { TablePaginationProps } from '@mui/material';
+import type { PaginationOptions } from './types';
 
 import { memo } from 'react';
 import TablePagination from '@mui/material/TablePagination';
 
-const AppTablePagination = memo(
-	({ count, ...props }: Omit<TablePaginationProps, 'component' | 'labelRowsPerPage'>) => {
-		if (count === 0) {
-			return null;
-		}
+interface AppTablePaginationProps {
+	options: PaginationOptions;
+}
 
-		return <TablePagination component="div" labelRowsPerPage="Строк:" count={count} {...props} />;
-	},
-);
+const AppTablePagination = memo(({ options }: AppTablePaginationProps) => {
+	if (options.count === 0) {
+		return null;
+	}
+
+	return (
+		<TablePagination
+			component="div"
+			labelRowsPerPage="Строк:"
+			sx={{
+				'& .MuiTablePagination-toolbar': {
+					pl: 0,
+				},
+			}}
+			{...options}
+		/>
+	);
+});
 
 AppTablePagination.displayName = 'AppTablePagination';
 
