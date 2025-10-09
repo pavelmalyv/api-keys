@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import AppButtonIcon from '@UI/AppButtonIcon';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import useCopyToClipboard from '@shared/hooks/useCopyToClipboard/useCopyToClipboard';
+import useCopyToClipboardNotify from '@shared/hooks/useCopyToClipboardNotify/useCopyToClipboardNotify';
 
 interface CopyToClipboardProps extends BoxProps {
 	copyText: string;
@@ -19,7 +19,7 @@ const CopyToClipboard = ({ iconSx, children, copyText, ...props }: CopyToClipboa
 	const [isCopied, setIsCopied] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const isTouch = useMediaQuery('(pointer: coarse)');
-	const copyToClipboard = useCopyToClipboard();
+	const copyToClipboardNotify = useCopyToClipboardNotify();
 	const tooltipCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	useEffect(() => {
@@ -58,12 +58,10 @@ const CopyToClipboard = ({ iconSx, children, copyText, ...props }: CopyToClipboa
 	};
 
 	const handleClick = async () => {
-		const result = await copyToClipboard(copyText);
+		await copyToClipboardNotify(copyText);
 
-		if (result.success) {
-			setIsCopied(true);
-			setIsOpen(true);
-		}
+		setIsCopied(true);
+		setIsOpen(true);
 	};
 
 	return (
