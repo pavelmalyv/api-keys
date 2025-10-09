@@ -76,10 +76,10 @@ const ApiKeysTable = () => {
 
 	const handlePageChange = useCallback((_: unknown, page: number) => setPage(page), []);
 
-	const handleRowsPerPageChange = useCallback(
-		(e: React.ChangeEvent<HTMLInputElement>) => setRowsPerPage(Number(e.target.value)),
-		[],
-	);
+	const handleRowsPerPageChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+		setRowsPerPage(Number(e.target.value));
+		setPage(0);
+	}, []);
 
 	const renderBodyRow = useCallback<RenderBodyRow>(
 		(row) => ({
